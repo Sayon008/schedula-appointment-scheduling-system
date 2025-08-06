@@ -178,21 +178,26 @@ See Swagger docs for all endpoints, request/response formats, and error codes.
 To add a new dependency:
 
 ````json
-
 npm install <package-name>
+````
+
 To add a dev dependency:
 
 ````json
 
 npm install --save-dev <package-name>
+````
+
 🧹 Linting & Formatting
 Lint:
-````json
 
+````json
 npm run lint
-Format:
-````json
+````
 
+Format:
+
+````json
 npm run format
 ````
 
