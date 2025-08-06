@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "HealthClinic",
+            "database": "healthclinic_management_system",
+            "username": "healthclinic_user",
+            "password": "healthclinic"
+        }
+    ]
+}
