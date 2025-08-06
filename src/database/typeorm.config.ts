@@ -6,6 +6,7 @@ dotenv.config({ path: '.env.development' });
 
 export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
+  url: process.env.DATABASE_URL,
   host: process.env.DB_HOST,
   port: parseInt(process.env.DB_PORT || '5432', 10),
   username: process.env.DB_USERNAME,
@@ -15,6 +16,9 @@ export const dataSourceOptions: DataSourceOptions = {
   migrations: [__dirname + '/../migrations/*.{ts,js}'],
   synchronize: false, // Important: use migrations, not sync
   logging: true,
+  ssl: {
+    rejectUnauthorized: false
+  },
 };
 
 const dataSource = new DataSource(dataSourceOptions);
