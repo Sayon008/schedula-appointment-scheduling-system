@@ -4,6 +4,8 @@
 /build
 /notes
 .npmrc_bkp
+.env.development
+.env
 
 # Logs
 logs

@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class HelloService{
-    getHello():{message:string}{
-        return {message: 'Hello World!'};
+    getHello():string{
+        return 'Hello World! From Render Deployment, Our First Deploymnet of project';
     }
 }
