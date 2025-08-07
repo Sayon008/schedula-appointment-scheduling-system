@@ -7,7 +7,7 @@ export class HelloController {
   constructor(private readonly helloService: HelloService){}
 
   @Get('api/v1/hello')
-  getHello(): { message: string } {
+  getHello(): string  {
     return this.helloService.getHello();
   }
 }
