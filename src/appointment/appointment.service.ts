@@ -10,6 +10,7 @@ import { AppointmentStatus } from './entity/AppointmentStatus.enum';
 import { AppointmnetResponseDTO } from './dto/appointmentResponse.dto';
 import { formatTime } from 'src/common/utils/date-format.util';
 import { UpdateAppointmentDTO } from './dto/updateAppointment.dto';
+import { DateTime } from 'luxon';
 
 @Injectable()
 export class AppointmentService {
@@ -44,9 +45,23 @@ export class AppointmentService {
         }
 
         //Validation of the slot timings
-        const requestedApptTime = new Date(dto.appointment_time);
-        const slotStartDateTime = new Date(`${timeSlot.date}T${timeSlot.start_time}`);
-        const slotEndDateTime = new Date(`${timeSlot.date}T${timeSlot.end_time}`);
+        const requestedApptTime = DateTime.fromFormat(
+            dto.appointment_time,
+            'yyyy-MM-dd HH:mm:ss',
+            {zone : 'Asia/Kolkata'},
+        ).toUTC().toJSDate();
+
+        const slotStartDateTime = DateTime.fromFormat(
+            `${timeSlot.date} ${timeSlot.start_time}`,
+            'yyyy-MM-dd HH:mm:ss',
+            { zone: 'Asia/Kolkata' }
+        ).toUTC().toJSDate();
+
+        const slotEndDateTime = DateTime.fromFormat(
+            `${timeSlot.date} ${timeSlot.end_time}`,
+            'yyyy-MM-dd HH:mm:ss',
+            { zone: 'Asia/Kolkata' }
+        ).toUTC().toJSDate();
 
 
         if(requestedApptTime.getTime() < slotStartDateTime.getTime() || requestedApptTime.getTime() > slotEndDateTime.getTime()){
